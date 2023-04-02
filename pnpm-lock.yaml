@@ -192,6 +192,15 @@ importers:
         specifier: ^5.0.3
         version: 5.0.3
 
+  packages/styles:
+    devDependencies:
+      sass:
+        specifier: ^1.60.0
+        version: 1.60.0
+      vite:
+        specifier: ^4.2.1
+        version: 4.2.1(sass@1.60.0)
+
   packages/tsconfig: {}
 
   packages/ui:
@@ -199,6 +208,9 @@ importers:
       '@ti/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@ti/styles':
+        specifier: workspace:*
+        version: link:../styles
       '@ti/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -217,15 +229,9 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.2.0
-      sass:
-        specifier: ^1.60.0
-        version: 1.60.0
       typescript:
         specifier: ^5.0.3
         version: 5.0.3
-      vite:
-        specifier: ^4.2.1
-        version: 4.2.1(sass@1.60.0)
 
 packages:
 

@@ -10,13 +10,13 @@
     "dev": "turbo run dev --no-daemon",
     "lint": "turbo run lint --no-daemon",
     "build": "turbo run build --no-daemon",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,md,scss}\"",
     "clean": "rm -rf node_modules && pnpm -r exec -- rm -rf .turbo node_modules .next dist coverage",
     "nest": "cd apps/api && nest",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*.{ts,tsx,js,jsx}": [
+    "**/*.{ts,tsx,js,scss}": [
       "pnpm format",
       "pnpx lint"
     ]
