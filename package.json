@@ -13,7 +13,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,scss}\"",
     "clean": "rm -rf node_modules && pnpm -r exec -- rm -rf .turbo node_modules .next dist coverage",
     "nest": "cd apps/api && nest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commitmsg": "cz"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,scss}": [
@@ -22,14 +23,28 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
     "@ti/eslint-config": "workspace:*",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.0",
+    "lint-staged": "^13.2.1",
     "prettier": "latest",
     "turbo": "latest"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "packageManager": "pnpm@8.1.0"
+  "packageManager": "pnpm@8.1.0",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
 }
