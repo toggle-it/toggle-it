@@ -1,6 +1,5 @@
 module.exports = {
-  parser: "@typescript-eslint/parser",
-  extends: ["next", "turbo", "prettier"],
+  extends: ["next", "./base"],
   rules: {
     "@next/next/no-html-link-for-pages": "off",
   },
