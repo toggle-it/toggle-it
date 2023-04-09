@@ -1,5 +1,4 @@
 import auth from "@fastify/auth";
-import cookie from "@fastify/cookie";
 import helmet from "@fastify/helmet";
 import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
@@ -17,8 +16,9 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
 
+  app.enableCors();
+
   await app.register(auth);
-  await app.register(cookie);
   await app.register(helmet, {
     contentSecurityPolicy: {
       directives: {
@@ -30,11 +30,17 @@ async function bootstrap() {
     },
   });
 
-  const config = new DocumentBuilder().setTitle(pkg.name).setVersion(pkg.version).build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup("doc", app, document, { useGlobalPrefix: true });
+  if (configService.get<boolean>("ENABLE_SWAGGER_UI")) {
+    const config = new DocumentBuilder()
+      .setTitle(pkg.name)
+      .setVersion(pkg.version)
+      .build();
+    const document = SwaggerModule.createDocument(app, config);
 
-  await app.listen(configService.get("PORT"));
+    SwaggerModule.setup("doc", app, document, { useGlobalPrefix: true });
+  }
+
+  await app.listen(configService.get<number>("PORT"));
 }
 
 bootstrap();
