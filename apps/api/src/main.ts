@@ -1,5 +1,6 @@
 import auth from "@fastify/auth";
 import helmet from "@fastify/helmet";
+import { ValidationPipe } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
 import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify";
@@ -17,6 +18,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
 
   app.enableCors();
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
   await app.register(auth);
   await app.register(helmet, {
