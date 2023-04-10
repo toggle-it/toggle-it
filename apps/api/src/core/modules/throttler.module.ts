@@ -1,17 +1,19 @@
 import { Module } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { ThrottlerModule as NestThrottlerModule } from "@nestjs/throttler";
+import { APP_GUARD } from "@nestjs/core";
+import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 
 @Module({
   imports: [
-    NestThrottlerModule.forRootAsync({
+    ThrottlerModule.forRootAsync({
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        ttl: 60,
         limit: configService.get("MAX_REQUESTS_PER_MINUTE"),
+        ttl: 60,
       }),
     }),
   ],
-  exports: [NestThrottlerModule],
+  providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
+  exports: [ThrottlerModule],
 })
-export class ThrottlerModule {}
+export class CustomThrottlerModule {}
