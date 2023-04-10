@@ -5,19 +5,18 @@ import { configuration } from "../config/configuration";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { AuthModule } from "./auth/auth.module";
-import { DatabaseModule, ThrottlerModule } from "./core/modules";
-import { ThrottleProvider } from "./core/providers";
+import { CustomThrottlerModule, DatabaseModule } from "./core/modules";
 import { UsersModule } from "./users/users.module";
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
-    ThrottlerModule,
+    CustomThrottlerModule,
     DatabaseModule,
     AuthModule,
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ThrottleProvider],
+  providers: [AppService],
 })
 export class AppModule {}

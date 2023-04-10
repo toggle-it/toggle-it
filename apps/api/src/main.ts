@@ -36,6 +36,7 @@ async function bootstrap() {
     const config = new DocumentBuilder()
       .setTitle(pkg.name)
       .setVersion(pkg.version)
+      .addBearerAuth()
       .build();
     const document = SwaggerModule.createDocument(app, config);
 
