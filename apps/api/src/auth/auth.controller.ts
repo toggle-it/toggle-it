@@ -1,7 +1,9 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Post, Req } from "@nestjs/common";
+import { ApiBearerAuth } from "@nestjs/swagger";
+import { FastifyRequest } from "fastify";
 
-import { Public } from "../core/decorators";
 import { CreateUserDto } from "../users/dto/create-user.dto";
+import { Public, UseRefreshTokenGuard } from "./auth.decorators";
 import { AuthService } from "./auth.service";
 import { signInDto } from "./dto/auth-signin.dto";
 
@@ -22,4 +24,12 @@ export class AuthController {
 
   @Post("verify-request")
   async verifyRequest() {}
+
+  @UseRefreshTokenGuard()
+  @ApiBearerAuth()
+  @Post("refresh")
+  refresh(@Req() { user }: FastifyRequest) {
+    const token = this.authService.issueAccessToken(user);
+    return { access_token: token };
+  }
 }

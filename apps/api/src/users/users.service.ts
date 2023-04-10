@@ -5,6 +5,7 @@ import { Model } from "mongoose";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { User } from "./schemas/user.schema";
+import { MESSAGES } from "./users.constants";
 
 @Injectable()
 export class UsersService {
@@ -18,17 +19,23 @@ export class UsersService {
     return this.userModel.find().exec();
   }
 
-  findById(id: string) {
-    return this.userModel.findById(id).exec();
+  async findById(id: string) {
+    const user = await this.userModel.findById(id).exec();
+    if (!user) throw new NotFoundException(MESSAGES.notFound.user);
+
+    return user;
   }
 
-  findOneByEmail(email: string) {
-    return this.userModel.findOne({ email }).exec();
+  async findOneByEmail(email: string) {
+    const user = await this.userModel.findOne({ email }).exec();
+    if (!user) throw new NotFoundException(MESSAGES.notFound.user);
+
+    return user;
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
     const user = await this.userModel.findByIdAndUpdate(id, updateUserDto);
-    if (!user) throw new NotFoundException("oops! user not found");
+    if (!user) throw new NotFoundException(MESSAGES.notFound.user);
 
     return user;
   }

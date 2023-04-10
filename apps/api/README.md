@@ -8,6 +8,18 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Prepare for local development
+
+- Refer to ./config/configurations.ts to tweak avaiable env variables
+- Add .env in api root folder with the necessary env defined\
+
+e.g. for content in `./.env` file:
+
+```sh
+NEST_JWT_SECRET="YOUR RANDOM CHAR STRING HERE"
+NEST_REFRESH_TOKEN_SECRET="A DIFFERENT RANDOM CHAR STRING HERE"
+```
+
 ## Installation
 
 ```bash
@@ -39,3 +51,13 @@ $ pnpm run test:debug
 # test coverage
 $ pnpm run test:ci
 ```
+
+### Naming style for constants
+
+```js
+const SNAKE_CASE = "SNAKE_CASE";
+const SNAKE_CASE_KEY = "snakeCase";
+```
+
+The const with `_KEY` as a suffix will have camelCase styled value with `_key` keyword omitted.\
+All others will have same value as variable name.
