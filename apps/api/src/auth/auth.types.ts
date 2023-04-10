@@ -1,11 +1,13 @@
-import { Types } from "mongoose";
-
 declare module "fastify" {
   export interface FastifyRequest {
-    user?: PayloadJWT;
+    user?: RequestUser;
   }
 }
 
-export type PayloadJWT = {
-  sub: Types.ObjectId;
-};
+export interface RequestUser extends Omit<PayloadJWT, "sub"> {
+  id: string;
+}
+
+export interface PayloadJWT {
+  sub: string;
+}
