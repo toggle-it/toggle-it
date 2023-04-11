@@ -1,11 +1,12 @@
 import { Body, Controller, Delete, Get, Param, Patch } from "@nestjs/common";
-import { ApiBearerAuth } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 import { Serialize } from "../core/interceptors";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { UserDto } from "./dto/user.dto";
 import { UsersService } from "./users.service";
 
+@ApiTags("Users")
 @ApiBearerAuth()
 @Serialize(UserDto)
 @Controller("users")
