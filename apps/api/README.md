@@ -61,3 +61,8 @@ const SNAKE_CASE_KEY = "snakeCase";
 
 The const with `_KEY` as a suffix will have camelCase styled value with `_key` keyword omitted.\
 All others will have same value as variable name.
+
+### Naming convention for service methods
+
+- `findBy*` should handle all exceptions
+- `queryBy*` should return mongo-Document without handling any exception

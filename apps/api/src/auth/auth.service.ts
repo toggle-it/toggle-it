@@ -3,9 +3,11 @@ import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import bcrypt from "bcrypt";
 
+import { MESSAGES } from "../core/constants";
 import { CreateUserDto } from "../users/dto/create-user.dto";
+import { UserDocument } from "../users/schemas/user.schema";
 import { UsersService } from "../users/users.service";
-import { MESSAGES, REFRESH_TOKEN_SECRET } from "./auth.constants";
+import { REFRESH_TOKEN_SECRET } from "./auth.constants";
 import { RequestUser } from "./auth.types";
 import { signInDto } from "./dto/auth-signin.dto";
 
@@ -18,8 +20,12 @@ export class AuthService {
   ) {}
 
   async signUp(user: CreateUserDto) {
-    const account = await this.usersService.findOneByEmail(user.email);
-    if (account) throw new BadRequestException(MESSAGES.alreadyExist.email);
+    const account = await this.usersService.queryOneByEmail(user.email);
+
+    if (account) {
+      this.mailPasswordResetLink(account);
+      throw new BadRequestException(MESSAGES.alreadyExist.email);
+    }
 
     const password = await bcrypt.hash(user.password, 10);
     return this.usersService.create({ ...user, password });
@@ -55,5 +61,10 @@ export class AuthService {
       jwtid: user.id,
       secret: this.configService.get<string>(REFRESH_TOKEN_SECRET),
     });
+  }
+
+  mailPasswordResetLink(user: UserDocument) {
+    //TODO: Send email to reset password link
+    return user;
   }
 }
