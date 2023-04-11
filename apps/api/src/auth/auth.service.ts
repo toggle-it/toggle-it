@@ -31,7 +31,7 @@ export class AuthService {
 
     if (!match) throw new UnauthorizedException(MESSAGES.incorrect.password);
 
-    const userId = user._id.toString();
+    const userId = user._id.toHexString();
     const payload: RequestUser = { id: userId };
 
     return {

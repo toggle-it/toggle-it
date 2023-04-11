@@ -1,19 +1,16 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch } from "@nestjs/common";
 import { ApiBearerAuth } from "@nestjs/swagger";
 
-import { CreateUserDto } from "./dto/create-user.dto";
+import { Serialize } from "../core/interceptors";
 import { UpdateUserDto } from "./dto/update-user.dto";
+import { UserDto } from "./dto/user.dto";
 import { UsersService } from "./users.service";
 
 @ApiBearerAuth()
+@Serialize(UserDto)
 @Controller("users")
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
-
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
 
   @Get()
   findAll() {
