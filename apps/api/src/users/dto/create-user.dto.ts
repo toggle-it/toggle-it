@@ -10,7 +10,11 @@ export class CreateUserDto {
 
   @ApiProperty()
   @IsString()
-  name: string;
+  given_name: string;
+
+  @ApiProperty()
+  @IsString()
+  family_name?: string;
 
   @ApiProperty()
   @IsString()

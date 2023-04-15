@@ -3,11 +3,16 @@
   "globalDependencies": ["**/.env.*local"],
   "globalEnv": [
     "NEST_API_PORT",
-    "NEST_JWT_SECRET",
     "NEST_MONGODB_URI",
+    "NEST_WEB_APP_URL",
+    "NEST_MAX_REQUESTS_PER_MINUTE",
     "NEST_ENABLE_SWAGGER_UI",
+    "NEST_JWT_SECRET",
     "NEST_REFRESH_TOKEN_SECRET",
-    "NEST_MAX_REQUESTS_PER_MINUTE"
+    "NEST_GOOGLE_CLIENT_ID",
+    "NEST_GOOGLE_CLIENT_SECRET",
+    "NEST_MICROSOFT_CLIENT_ID",
+    "NEST_MICROSOFT_CLIENT_SECRET"
   ],
   "pipeline": {
     "build": {

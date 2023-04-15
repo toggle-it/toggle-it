@@ -4,7 +4,7 @@ import { FastifyRequest } from "fastify";
 import { Serialize } from "src/core/interceptors";
 
 import { CreateUserDto } from "../users/dto/create-user.dto";
-import { Public, UseRefreshTokenGuard } from "./auth.decorators";
+import { Public, RefreshTokenGuard } from "./auth.decorators";
 import { AuthService } from "./auth.service";
 import { signInDto } from "./dto/auth-signin.dto";
 import { AuthUserDto } from "./dto/auth-user.dto";
@@ -29,11 +29,21 @@ export class AuthController {
   @Post("verify-account")
   async verifyAccount() {}
 
-  @UseRefreshTokenGuard()
+  @RefreshTokenGuard()
   @ApiBearerAuth()
   @Get("refresh")
   refresh(@Req() { user }: FastifyRequest) {
     const token = this.authService.issueAccessToken(user);
     return { access_token: token };
+  }
+
+  @Get("google/callback")
+  async googleAuthRedirect(@Req() request: FastifyRequest) {
+    return this.authService.googleOAuth2(request);
+  }
+
+  @Get("microsoft/callback")
+  async microsoftAuthRedirect(@Req() request: FastifyRequest) {
+    return this.authService.microsoftOAuth2(request);
   }
 }
