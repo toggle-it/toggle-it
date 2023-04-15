@@ -1,0 +1,16 @@
+{
+  "name": "@ti/config",
+  "version": "0.0.1",
+  "main": "./src/index.ts",
+  "scripts": {
+    "lint": "eslint **/*.ts*"
+  },
+  "devDependencies": {
+    "@ti/eslint-config": "workspace:*",
+    "@ti/tsconfig": "workspace:*",
+    "@types/node": "18.15.11"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
