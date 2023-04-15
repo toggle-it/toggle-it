@@ -37,12 +37,12 @@ export class AuthController {
     return { access_token: token };
   }
 
-  @Get("google/callback")
+  @Get("callback/google")
   async googleAuthRedirect(@Req() request: FastifyRequest) {
     return this.authService.googleOAuth2(request);
   }
 
-  @Get("microsoft/callback")
+  @Get("callback/microsoft")
   async microsoftAuthRedirect(@Req() request: FastifyRequest) {
     return this.authService.microsoftOAuth2(request);
   }

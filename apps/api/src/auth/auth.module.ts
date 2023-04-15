@@ -64,7 +64,7 @@ export class AuthModule {
         auth: oauthPlugin.MICROSOFT_CONFIGURATION,
       },
       startRedirectPath: "/auth/microsoft",
-      callbackUri: `${webAppURL}/auth/microsoft/callback`,
+      callbackUri: `${webAppURL}/auth/callback/microsoft`,
     });
   }
 
@@ -81,7 +81,7 @@ export class AuthModule {
         auth: oauthPlugin.GOOGLE_CONFIGURATION,
       },
       startRedirectPath: "/auth/google",
-      callbackUri: `${webAppURL}/auth/google/callback`,
+      callbackUri: `${webAppURL}/auth/callback/google`,
     });
   }
 }
