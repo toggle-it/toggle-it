@@ -1,8 +1,7 @@
 {
   "name": "@ti/eslint-config",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "index.js",
-  "license": "MIT",
   "dependencies": {
     "@typescript-eslint/parser": "^5.58.0",
     "eslint": "^8.38.0",

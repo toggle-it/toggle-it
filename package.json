@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "dev": "turbo run dev --no-daemon",
-    "lint": "turbo run lint --no-daemon",
     "build": "turbo run build --no-daemon",
+    "lint": "turbo run lint --no-daemon -- --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,scss,json}\"",
     "clean": "rm -rf node_modules && pnpm -r exec -- rm -rf .turbo node_modules .next dist coverage",
     "nest": "cd apps/api && nest",
@@ -17,14 +17,14 @@
     "commitmsg": "cz"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.5.1",
-    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
     "@ti/eslint-config": "workspace:*",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
     "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "^1.9.1"
   },
   "engines": {
     "node": ">=14.0.0"

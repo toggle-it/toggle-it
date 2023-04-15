@@ -1,13 +1,13 @@
 {
   "name": "api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "build": "nest build",
     "prod": "node dist/main",
     "dev": "nest start --watch",
     "debug": "nest start --debug --watch",
-    "lint": "eslint **/*.ts --fix",
+    "lint": "eslint **/*.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
@@ -16,7 +16,7 @@
   "dependencies": {
     "@fastify/helmet": "^10.1.0",
     "@fastify/oauth2": "^7.0.1",
-    "@fastify/static": "^6.10.0",
+    "@fastify/static": "^6.10.1",
     "@nestjs/common": "^9.4.0",
     "@nestjs/core": "^9.4.0",
     "@nestjs/jwt": "^10.0.3",
@@ -35,7 +35,7 @@
     "rxjs": "^7.8.0"
   },
   "devDependencies": {
-    "@nestjs/cli": "^9.3.0",
+    "@nestjs/cli": "^9.4.0",
     "@nestjs/config": "^2.3.1",
     "@nestjs/schematics": "^9.1.0",
     "@nestjs/testing": "^9.4.0",
