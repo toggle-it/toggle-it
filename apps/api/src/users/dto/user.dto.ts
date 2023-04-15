@@ -9,4 +9,7 @@ export class UserDto {
 
   @Expose()
   given_name: string;
+
+  @Expose()
+  family_name: string;
 }
