@@ -6,9 +6,11 @@
   "scripts": {
     "lint": "eslint **/*.ts*"
   },
+  "dependencies": {
+    "@ti/styles": "workspace:^"
+  },
   "devDependencies": {
     "@ti/eslint-config": "workspace:*",
-    "@ti/styles": "workspace:*",
     "@ti/tsconfig": "workspace:*",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
