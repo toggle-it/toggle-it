@@ -2,11 +2,7 @@
   "name": "@ti/styles",
   "version": "0.0.1",
   "main": "./index.scss",
-  "scripts": {
-    "build": "vite build"
-  },
-  "devDependencies": {
-    "sass": "^1.62.0",
-    "vite": "^4.2.1"
+  "dependencies": {
+    "sass": "^1.62.0"
   }
 }
