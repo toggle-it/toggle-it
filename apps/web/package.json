@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@ti/ui": "workspace:*",
-    "next": "^13.3.0",
+    "next": "13.3.1-canary.8",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -18,11 +18,10 @@
     "@ti/config": "workspace:*",
     "@ti/eslint-config": "workspace:*",
     "@ti/tsconfig": "workspace:*",
-    "@babel/core": "^7.21.4",
-    "eslint": "8.38.0",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
+    "eslint": "8.38.0",
     "typescript": "^5.0.4"
   }
 }
