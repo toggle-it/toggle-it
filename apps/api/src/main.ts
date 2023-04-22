@@ -1,11 +1,12 @@
+import fastifyCookie from "@fastify/cookie";
 import helmet from "@fastify/helmet";
 import { ValidationPipe } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
 import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
-import pkg from "package.json";
 
+import pkg from "../package.json";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
@@ -16,8 +17,12 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
 
-  app.enableCors();
+  app.enableCors({ origin: configService.get<string>("WEB_APP_URL"), credentials: true });
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+
+  await app.register(fastifyCookie, {
+    secret: configService.get<string>("JWT_SECRET"), // share the same secret with JWT
+  });
 
   await app.register(helmet, {
     contentSecurityPolicy: {

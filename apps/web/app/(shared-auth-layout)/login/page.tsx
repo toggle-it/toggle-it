@@ -10,7 +10,7 @@ export default function LoginPage() {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    const url = API_URL + "/auth/signin";
+    const url = API_URL + "/auth/login";
 
     const response = await fetch(url, {
       method: "POST",
@@ -23,7 +23,7 @@ export default function LoginPage() {
 
   if (profile) {
     // TODO: store session and redirect to dashboard
-    return JSON.stringify(profile.user);
+    return JSON.stringify(profile);
   }
 
   return (
