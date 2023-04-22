@@ -1,6 +1,7 @@
 import { Expose, Type } from "class-transformer";
 
 import { UserDto } from "../../users/dto/user.dto";
+import { AuthTokenDto } from "./auth-token.dto";
 
 export class AuthUserDto {
   @Expose()
@@ -8,8 +9,6 @@ export class AuthUserDto {
   user: UserDto;
 
   @Expose()
-  access_token: string;
-
-  @Expose()
-  refresh_token: string;
+  @Type(() => AuthTokenDto)
+  token: AuthTokenDto;
 }

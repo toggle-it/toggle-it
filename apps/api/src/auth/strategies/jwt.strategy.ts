@@ -10,7 +10,10 @@ import { PayloadJWT, RequestUser } from "../auth.types";
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly configService: ConfigService) {
     super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      jwtFromRequest: ExtractJwt.fromExtractors([
+        ExtractJwt.fromAuthHeaderAsBearerToken(),
+        (req) => req.cookies["jwt"],
+      ]),
       secretOrKey: configService.get<string>(JWT_SECRET),
       ignoreExpiration: false,
     });

@@ -4,13 +4,13 @@ import { JwtService } from "@nestjs/jwt";
 import bcrypt from "bcrypt";
 import { FastifyRequest } from "fastify";
 
-import { MESSAGES } from "../core/constants";
-import { CreateUserDto } from "../users/dto/create-user.dto";
-import { UserDocument } from "../users/schemas/user.schema";
-import { UsersService } from "../users/users.service";
-import { REFRESH_TOKEN_SECRET } from "./auth.constants";
-import { RequestUser } from "./auth.types";
-import { signInDto } from "./dto/auth-signin.dto";
+import { MESSAGES } from "../../core/constants";
+import { CreateUserDto } from "../../users/dto/create-user.dto";
+import { UserDocument } from "../../users/schemas/user.schema";
+import { UsersService } from "../../users/users.service";
+import { EXPIRY, REFRESH_TOKEN_SECRET } from "../auth.constants";
+import { RequestUser } from "../auth.types";
+import { signInDto } from "../dto/auth-signin.dto";
 import { OAuth2Service } from "./oauth2.service";
 
 @Injectable()
@@ -45,8 +45,10 @@ export class AuthService {
 
     return {
       user,
-      access_token: this.issueAccessToken(payload),
-      refresh_token: this.issueRefreshToken(payload),
+      token: {
+        access_token: this.issueAccessToken(payload),
+        refresh_token: this.issueRefreshToken(payload),
+      },
     };
   }
 
@@ -60,8 +62,8 @@ export class AuthService {
     const payload = { sub: user.id };
 
     return this.jwtService.sign(payload, {
-      expiresIn: "30d",
       jwtid: user.id,
+      expiresIn: EXPIRY.REFRESH_TOKEN,
       secret: this.configService.get<string>(REFRESH_TOKEN_SECRET),
     });
   }

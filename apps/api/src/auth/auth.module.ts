@@ -6,16 +6,11 @@ import { JwtModule } from "@nestjs/jwt";
 import { FastifyInstance } from "fastify";
 
 import { UsersModule } from "../users/users.module";
-import {
-  GOOGLE_CLIENT,
-  JWT_SECRET,
-  MICROSOFT_CLIENT,
-  WEB_APP_URL,
-} from "./auth.constants";
+import { CLIENT, EXPIRY, JWT_SECRET, WEB_APP_URL } from "./auth.constants";
 import { AuthController } from "./auth.controller";
-import { AuthService } from "./auth.service";
 import { JwtAuthGuard } from "./guards/jwt-auth.guard";
-import { OAuth2Service } from "./oauth2.service";
+import { AuthService } from "./services/auth.service";
+import { OAuth2Service } from "./services/oauth2.service";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 import { RefreshTokenStrategy } from "./strategies/refresh-token.strategy";
 
@@ -26,7 +21,7 @@ import { RefreshTokenStrategy } from "./strategies/refresh-token.strategy";
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>(JWT_SECRET),
-        signOptions: { expiresIn: "1h" },
+        signOptions: { expiresIn: EXPIRY.ACCESS_TOKEN },
       }),
     }),
   ],
@@ -53,8 +48,8 @@ export class AuthModule {
 
   private registerMicrosoftOAuthPlugin() {
     const webAppURL = this.configService.get<string>(WEB_APP_URL);
-    const id = this.configService.get<string>(MICROSOFT_CLIENT.ID);
-    const secret = this.configService.get<string>(MICROSOFT_CLIENT.SECRET);
+    const id = this.configService.get<string>(CLIENT.MICROSOFT.ID);
+    const secret = this.configService.get<string>(CLIENT.MICROSOFT.SECRET);
 
     this.instance.register(oauthPlugin, {
       name: "microsoftOAuth2",
@@ -70,8 +65,8 @@ export class AuthModule {
 
   private registerGoogleOAuthPlugin() {
     const webAppURL = this.configService.get<string>(WEB_APP_URL);
-    const id = this.configService.get<string>(GOOGLE_CLIENT.ID);
-    const secret = this.configService.get<string>(GOOGLE_CLIENT.SECRET);
+    const id = this.configService.get<string>(CLIENT.GOOGLE.ID);
+    const secret = this.configService.get<string>(CLIENT.GOOGLE.SECRET);
 
     this.instance.register(oauthPlugin, {
       name: "googleOAuth2",
