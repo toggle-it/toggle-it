@@ -46,7 +46,7 @@ async function bootstrap() {
     SwaggerModule.setup("doc", app, document, { useGlobalPrefix: true });
   }
 
-  await app.listen(configService.get<number>("PORT"));
+  await app.listen(configService.get<number>("PORT"), "0.0.0.0");
 }
 
 bootstrap();
