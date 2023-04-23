@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "nest build",
-    "prod": "node dist/main",
+    "prod": "node dist/src/main",
     "dev": "nest start --watch",
     "debug": "nest start --debug --watch",
     "lint": "eslint **/*.ts",
