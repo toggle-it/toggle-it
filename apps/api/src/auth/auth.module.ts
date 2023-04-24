@@ -6,7 +6,7 @@ import { JwtModule } from "@nestjs/jwt";
 import { FastifyInstance } from "fastify";
 
 import { UsersModule } from "../users/users.module";
-import { CLIENT, EXPIRY, JWT_SECRET, WEB_APP_URL } from "./auth.constants";
+import { CLIENT, EXPIRY, GLOBAL_PREFIX, JWT_SECRET, WEB_APP_URL } from "./auth.constants";
 import { AuthController } from "./auth.controller";
 import { JwtAuthGuard } from "./guards/jwt-auth.guard";
 import { AuthService } from "./services/auth.service";
@@ -47,6 +47,7 @@ export class AuthModule {
   }
 
   private registerMicrosoftOAuthPlugin() {
+    const globlaPrefix = this.configService.get<string>(GLOBAL_PREFIX);
     const webAppURL = this.configService.get<string>(WEB_APP_URL);
     const id = this.configService.get<string>(CLIENT.MICROSOFT.ID);
     const secret = this.configService.get<string>(CLIENT.MICROSOFT.SECRET);
@@ -58,12 +59,13 @@ export class AuthModule {
         client: { id, secret },
         auth: oauthPlugin.MICROSOFT_CONFIGURATION,
       },
-      startRedirectPath: "/auth/microsoft",
+      startRedirectPath: `/${globlaPrefix}/auth/microsoft`,
       callbackUri: `${webAppURL}/auth/callback/microsoft`,
     });
   }
 
   private registerGoogleOAuthPlugin() {
+    const globlaPrefix = this.configService.get<string>(GLOBAL_PREFIX);
     const webAppURL = this.configService.get<string>(WEB_APP_URL);
     const id = this.configService.get<string>(CLIENT.GOOGLE.ID);
     const secret = this.configService.get<string>(CLIENT.GOOGLE.SECRET);
@@ -75,7 +77,7 @@ export class AuthModule {
         client: { id, secret },
         auth: oauthPlugin.GOOGLE_CONFIGURATION,
       },
-      startRedirectPath: "/auth/google",
+      startRedirectPath: `/${globlaPrefix}/auth/google`,
       callbackUri: `${webAppURL}/auth/callback/google`,
     });
   }

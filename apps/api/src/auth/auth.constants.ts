@@ -2,6 +2,7 @@ export const JWT_SECRET = "JWT_SECRET";
 export const OAUTH2_CLIENT = "OAUTH2_CLIENT";
 export const REFRESH_TOKEN_SECRET = "REFRESH_TOKEN_SECRET";
 export const WEB_APP_URL = "WEB_APP_URL";
+export const GLOBAL_PREFIX = "GLOBAL_PREFIX";
 
 export const JWT_KEY = "jwt";
 export const REFRESH_TOKEN_KEY = "refreshToken";
