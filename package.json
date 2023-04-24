@@ -7,9 +7,9 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo run dev --no-daemon",
-    "build": "turbo run build --no-daemon",
-    "lint": "turbo run lint --no-daemon -- --fix",
+    "dev": "dotenv -- turbo dev --no-daemon",
+    "build": "turbo build --no-daemon",
+    "lint": "turbo lint --no-daemon -- --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,scss,json}\"",
     "clean": "rm -rf node_modules && pnpm -r exec -- rm -rf .turbo node_modules .next dist coverage",
     "nest": "cd apps/api && nest",
@@ -22,6 +22,7 @@
     "@ti/eslint-config": "workspace:*",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
+    "dotenv-cli": "^7.2.1",
     "husky": "^8.0.3",
     "prettier": "latest",
     "turbo": "^1.9.3"

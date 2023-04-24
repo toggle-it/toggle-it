@@ -17,6 +17,7 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
 
+  app.setGlobalPrefix(configService.get<string>("GLOBAL_PREFIX"));
   app.enableCors({ origin: configService.get<string>("WEB_APP_URL"), credentials: true });
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
