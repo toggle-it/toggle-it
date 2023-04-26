@@ -25,7 +25,7 @@ mkcert "*.toggleit.dev" localhost 127.0.0.1 ::1
 - Update your local IPv4 address for `API_URL` and `APP_URL` in _.env_ file
 
 ```bash
-cp .example.env .env
+cp example.env .env
 ```
 
 <u>**FYI:**</u>
@@ -38,11 +38,11 @@ If configuring oauth2 authentication then use these callback url to generate pro
 **Step 4**
 
 - Start docker containers
-- Start api and web-app server
+- Start API and WEB server. The following commands with spin up nginx and mongodb and start dev mode `packages/config` and its dependents `apps/web` and `apps/api`
 
 ```bash
 docker compose up -d
-yarn dev --filter api --filter web
+yarn dev --filter=...config
 ```
 
 **Step 5**

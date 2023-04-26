@@ -2,10 +2,9 @@
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
   "globalEnv": [
-    "NEST_API_PORT",
+    "NEST_API_GLOBAL_PREFIX",
     "NEST_MONGODB_URI",
     "NEST_WEB_APP_URL",
-    "NEST_API_GLOBAL_PREFIX",
     "NEST_MAX_REQUESTS_PER_MINUTE",
     "NEST_ENABLE_SWAGGER_UI",
     "NEST_JWT_SECRET",
