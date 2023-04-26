@@ -1,16 +1,16 @@
 {
   "name": "@ti/config",
   "version": "0.0.1",
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
   "scripts": {
-    "lint": "eslint **/*.ts*"
+    "dev": "pnpm build --watch",
+    "build": "tsup src/index.ts",
+    "lint": "eslint **/*.ts"
   },
   "devDependencies": {
     "@ti/eslint-config": "workspace:*",
     "@ti/tsconfig": "workspace:*",
-    "@types/node": "18.15.13"
-  },
-  "publishConfig": {
-    "access": "public"
+    "@types/node": "18.15.13",
+    "tsup": "^6.7.0"
   }
 }

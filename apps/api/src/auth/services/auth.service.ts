@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable, UnauthorizedException } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
+import { REFRESH_TOKEN_SECRET } from "@ti/config";
 import bcrypt from "bcrypt";
 import { FastifyRequest } from "fastify";
 
@@ -8,7 +8,7 @@ import { MESSAGES } from "../../core/constants";
 import { CreateUserDto } from "../../users/dto/create-user.dto";
 import { UserDocument } from "../../users/schemas/user.schema";
 import { UsersService } from "../../users/users.service";
-import { EXPIRY, REFRESH_TOKEN_SECRET } from "../auth.constants";
+import { EXPIRY } from "../auth.constants";
 import { RequestUser } from "../auth.types";
 import { signInDto } from "../dto/auth-signin.dto";
 import { OAuth2Service } from "./oauth2.service";
@@ -16,7 +16,6 @@ import { OAuth2Service } from "./oauth2.service";
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly configService: ConfigService,
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
     private readonly oauth2: OAuth2Service
@@ -64,7 +63,7 @@ export class AuthService {
     return this.jwtService.sign(payload, {
       jwtid: user.id,
       expiresIn: EXPIRY.REFRESH_TOKEN,
-      secret: this.configService.get<string>(REFRESH_TOKEN_SECRET),
+      secret: REFRESH_TOKEN_SECRET,
     });
   }
 

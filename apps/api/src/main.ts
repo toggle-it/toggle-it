@@ -1,10 +1,10 @@
 import fastifyCookie from "@fastify/cookie";
 import helmet from "@fastify/helmet";
 import { ValidationPipe } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
 import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
+import { ENABLE_SWAGGER_UI, GLOBAL_PREFIX, JWT_SECRET, WEB_APP_URL } from "@ti/config";
 
 import pkg from "../package.json";
 import { AppModule } from "./app.module";
@@ -15,15 +15,11 @@ async function bootstrap() {
     new FastifyAdapter()
   );
 
-  const configService = app.get(ConfigService);
-
-  app.setGlobalPrefix(configService.get<string>("GLOBAL_PREFIX"));
-  app.enableCors({ origin: configService.get<string>("WEB_APP_URL"), credentials: true });
+  app.setGlobalPrefix(GLOBAL_PREFIX);
+  app.enableCors({ origin: WEB_APP_URL, credentials: true });
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
-  await app.register(fastifyCookie, {
-    secret: configService.get<string>("JWT_SECRET"), // share the same secret with JWT
-  });
+  await app.register(fastifyCookie, { secret: JWT_SECRET }); // share same secret with JWT
 
   await app.register(helmet, {
     contentSecurityPolicy: {
@@ -36,7 +32,7 @@ async function bootstrap() {
     },
   });
 
-  if (configService.get<boolean>("ENABLE_SWAGGER_UI")) {
+  if (ENABLE_SWAGGER_UI) {
     const config = new DocumentBuilder()
       .setTitle(pkg.name)
       .setVersion(pkg.version)
@@ -47,7 +43,7 @@ async function bootstrap() {
     SwaggerModule.setup("doc", app, document, { useGlobalPrefix: true });
   }
 
-  await app.listen(configService.get<number>("PORT"), "0.0.0.0");
+  await app.listen(3000, "0.0.0.0");
 }
 
 bootstrap();
