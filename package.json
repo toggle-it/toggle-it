@@ -2,6 +2,7 @@
   "name": "toggle-it",
   "version": "0.0.0",
   "private": true,
+  "description": "Open-Source Feature Flag Management Tool",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -36,7 +37,7 @@
     "turbo": "^1.9.3"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0"
   },
   "packageManager": "pnpm@8.1.0",
   "commitlint": {
