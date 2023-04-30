@@ -30,6 +30,13 @@ cp example.env .env
 
 <u>**FYI:**</u>
 
+To fetch IPv4 of your local machine, run below commands in your terminal. I call this `⚡easy-mode`
+
+```bash
+npm i -g internal-ip-cli
+internal-ip --ipv4
+```
+
 If configuring oauth2 authentication then use these callback url to generate provider's `CLIENT_ID` and `CLIENT_SECRET`
 
 - **Google:** `https://local.toggleit.dev/auth/callback/google`

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "storybook dev -p 6006 --no-open",
-    "build": "storybook build -o ./dist"
+    "build": "storybook build -o ./dist",
+    "lint": "eslint **/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
     "@storybook/addon-essentials": "^7.0.7",
