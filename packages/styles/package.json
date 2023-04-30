@@ -1,8 +1,5 @@
 {
   "name": "@ti/styles",
   "version": "0.0.1",
-  "main": "./index.scss",
-  "dependencies": {
-    "sass": "^1.62.1"
-  }
+  "main": "./index.scss"
 }

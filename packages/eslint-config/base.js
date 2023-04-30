@@ -1,3 +1,5 @@
+/** @type {import('@types/eslint').Linter.Config} */
+
 module.exports = {
   parser: "@typescript-eslint/parser",
   extends: ["turbo", "prettier"],
