@@ -1,73 +1,117 @@
-# Turborepo starter
+<p align="center">
+  <a href="https://toggleit.dev" rel="noopener">
+    <img height="64" src="https://i.imgur.com/JknSWI7.png" alt="Toggle it">
+  </a>
+</p>
 
-This is an official pnpm starter turborepo.
+<h3 align="center">Feature Flag Management Tool</h3>
+<br>
+<div align="center">
 
-## What's inside?
+[![GitHub Issues](https://img.shields.io/github/issues/toggle-it/toggle-it.svg)](https://github.com/toggle-it/toggle-it/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/toggle-it/toggle-it.svg)](https://github.com/toggle-it/toggle-it/pulls)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](/LICENSE)
 
-This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
+</div>
 
-### Apps and Packages
+---
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+<p align="center"> Few lines describing your project.
+    <br>
+</p>
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## 📝 Table of Contents
 
-### Utilities
+- [About](#about)
+- [Getting Started](#getting_started)
+  - [Prerequisites](#prerequisites)
+  - [Installing](./.docker/README.md)
+  - [Deployment](#deployment)
+  - [Usage](#usage)
+- [Built Using](#built_using)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
 
-This turborepo has some additional tools already setup for you:
+## 🧐 About <a name = "about"></a>
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+Write about 1-2 paragraphs describing the purpose of your project.
 
-### Build
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-To build all apps and packages, run the following command:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-```
-cd my-turborepo
-pnpm run build
-```
+### Prerequisites <a name = "prerequisites"></a>
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm run dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+What things you need to install the software and how to install them.
 
 ```
-cd my-turborepo
-pnpm dlx turbo login
+Give examples
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+### Installing
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+A step by step series of examples that tell you how to get a development env running.
+
+Say what the step will be
 
 ```
-pnpm dlx turbo link
+Give the example
 ```
 
-## Useful Links
+And repeat
 
-Learn more about the power of Turborepo:
+```
+until finished
+```
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+End with an example of getting some data out of the system or using it for a little demo.
+
+## 🔧 Running the tests <a name = "tests"></a>
+
+Explain how to run the automated tests for this system.
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## 🎈 Usage <a name="usage"></a>
+
+Add notes about how to use the system.
+
+## 🚀 Deployment <a name = "deployment"></a>
+
+Add additional notes about how to deploy this on a live system.
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [MongoDB](https://www.mongodb.com/) - Database
+- [Nestjs](https://nestjs.com/) - A progressive Server Framework
+- [Fastify](https://www.fastify.io/) - Nestjs's underlying Server Framework
+- [Swagger](https://swagger.io/) - API Documentation tool
+- [Nextjs](https://nextjs.org/) - React based Web Framework
+- [TailwindCss](https://tailwindcss.com/) - utility-first CSS Framework
+- [Storybook](https://storybook.js.org/) - React Component Documentation tool
+- [Turborepo](https://turbo.build/repo) - JS/TS build system for monorepo
+- [NodeJs](https://nodejs.org/en/) - Server Environment
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@pankaj-ch](https://github.com/pankaj-ch) - Idea & Initial work
+
+See also the list of [contributors](https://github.com/toggle-it/toggle-it/contributors) who participated in this project.
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+
+Inspired from [Unleash](https://github.com/Unleash/unleash). An open-source project and also the most loved Feature Flag management tool.
