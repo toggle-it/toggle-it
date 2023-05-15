@@ -23,7 +23,7 @@ export class AuthCookieInterceptor implements NestInterceptor {
         // Set the cookie header
         if (this.set) {
           response.setCookie(JWT_KEY, data.token.access_token, {
-            maxAge: ms(EXPIRY.ACCESS_TOKEN),
+            maxAge: ms(EXPIRY.REFRESH_TOKEN),
             priority: "high",
             httpOnly: true,
             secure: true,
