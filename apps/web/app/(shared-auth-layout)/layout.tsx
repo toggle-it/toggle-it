@@ -1,8 +1,14 @@
 import { API_URL } from "@ti/config";
+import { BgFancy } from "@ti/ui";
+import { ReactNode } from "react";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+type Props = {
+  children: ReactNode;
+};
+
+export default function Layout({ children }: Props) {
   return (
-    <div>
+    <BgFancy>
       <div>
         <form action={API_URL + "/auth/google"}>
           <button>Google</button>
@@ -13,6 +19,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
 
       {children}
-    </div>
+    </BgFancy>
   );
 }
