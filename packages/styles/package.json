@@ -1,5 +1,13 @@
 {
   "name": "@ti/styles",
   "version": "0.0.1",
-  "main": "./index.scss"
+  "main": "./index.css",
+  "dependencies": {
+    "tailwindcss-animate": "^1.0.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2"
+  }
 }

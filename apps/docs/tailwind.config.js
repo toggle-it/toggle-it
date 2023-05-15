@@ -1,1 +1,1 @@
-module.exports = require("@ti/tailwind-config");
+module.exports = require("@ti/styles/tailwind.config");
