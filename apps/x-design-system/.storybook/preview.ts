@@ -1,9 +1,16 @@
 import "@ti/styles";
+import "./style.css";
 
-/** @type { import('@storybook/react').Preview } */
-const preview = {
+import type { Preview } from "@storybook/react";
+
+const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
+    darkMode: {
+      stylePreview: true,
+      darkClass: "dark",
+      classTarget: "html",
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
