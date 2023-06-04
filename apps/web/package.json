@@ -12,17 +12,16 @@
     "@ti/config": "workspace:*",
     "@ti/styles": "workspace:*",
     "@ti/ui": "workspace:*",
-    "next": "13.4.2",
+    "next": "13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@ti/eslint-config": "workspace:*",
     "@ti/tsconfig": "workspace:*",
-    "@types/node": "^20.1.4",
-    "@types/react": "^18.2.6",
+    "@types/node": "^20.2.5",
+    "@types/react": "^18.2.8",
     "@types/react-dom": "^18.2.4",
-    "eslint": "8.40.0",
-    "typescript": "^5.0.4"
+    "eslint": "8.42.0"
   }
 }
